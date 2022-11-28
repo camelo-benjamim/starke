@@ -1,0 +1,8 @@
+@import url('bootstrap.css');
+
+.bg-success {
+    background-color: #de004e!important;
+}
+.text-success {
+    color: #de004e!important;
+}
