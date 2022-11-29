@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     ##aplicativos de terceiros
     'crispy_forms',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ##DJANGO CURRENT USER MIDDLEWARE...
+    'django_currentuser.middleware.ThreadLocalUserMiddleware',
+
 ]
 
 ROOT_URLCONF = 'iot_starke.urls'
@@ -126,7 +130,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ## AUTH MODELS
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "accounts.Account"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
