@@ -132,7 +132,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ## AUTH MODELS
 AUTH_USER_MODEL = "accounts.Account"
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/show_iot_devices'
 LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type

@@ -44,3 +44,6 @@ class Actuator(models.Model):
 
     def __str__(self):
         return self.actuator_name
+
+
+##SCRIPT/ROTINA
