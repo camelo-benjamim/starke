@@ -40,6 +40,7 @@ class Actuator(models.Model):
     iot_device_actuator = models.ForeignKey(IotDevice,on_delete=models.CASCADE)
     actuator_name = models.CharField(max_length=50)
     is_actuator_active = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
     port_micro_actuator = models.PositiveSmallIntegerField()
 
     def __str__(self):
@@ -47,3 +48,9 @@ class Actuator(models.Model):
 
 
 ##SCRIPT/ROTINA
+class Routine(models.Model):
+    routine_name = models.CharField(max_length=32)
+    routine_description = models.TextField()
+    device_routine = models.ForeignKey(IotDevice,on_delete=models.CASCADE)
+    
+
