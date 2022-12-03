@@ -17,54 +17,60 @@
         </div>
       </nav>
     <div class="container-sm w-100">
-    <div class="row justify-content-center">
-    {% if my_devices%}
-    <h3 class="text-center text-danger mb-3">Meus dispositivos: </h3>
-    <table class="table mx-2" href="">
-        <thead>
-          <tr>
-            <th scope="col">Chave do dispositivo:</th>
-            <th scope="col">Nome do dispositivo:</th>
-            <th scope="col">Proprietário: </th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for i in my_devices%}
-          <tr>
-            <th scope="row"><a href="/device_control/{{i.device_key}}" class="text-success">{{i.device_key}}</a></th>
-            <td>{{i.device_name}}</td>
-            <td>{{i.owner}}</td>
-          </tr>
-            {% endfor %}
-          
-        </tbody>
-      </table>
-      {% endif %}
-      {% if third_devices%}
-      <h3 class="text-center text-dark my-4">Dispositivos de terceiros: </h3>
-    <table class="table mx-1">
-        <thead>
-          <tr>
-            <th scope="col">Chave do dispositivo:</th>
-            <th scope="col">Nome do dispositivo:</th>
-            <th scope="col">Proprietário: </th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for j in third_devices%}
-          <tr>
-            <th scope="row"><a href="/device_control/{{j.device_key}}" class="text-success">{{j.device_key}}</a></th>
-            <td>{{j.device_name}}</td>
-            <td>{{j.owner}}</td>
-          </tr>
-            {% endfor %}
-          
-        </tbody>
-      </table>
-      {% endif %}
-    
-    </div>
-</div>
+      <div class="row justify-content-center">
+        {% if my_devices%}
+        <h3 class="text-center text-danger mb-3">Meus dispositivos: </h3>
+        <table class="table mx-2" href="">
+            <thead>
+              <tr>
+                <th scope="col">Chave do dispositivo:</th>
+                <th scope="col">Nome do dispositivo:</th>
+                <th scope="col">Proprietário: </th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in my_devices%}
+              <tr>
+                <th scope="row"><a href="/device_control/{{i.device_key}}" class="text-success">{{i.device_key}}</a></th>
+                <td>{{i.device_name}}</td>
+                <td>{{i.owner}}</td>
+              </tr>
+                {% endfor %}
+              
+            </tbody>
+          </table>
+          {% endif %}
+          {% if third_devices%}
+          <h3 class="text-center text-dark my-4">Dispositivos de terceiros: </h3>
+        <table class="table mx-1">
+            <thead>
+              <tr>
+                <th scope="col">Chave do dispositivo:</th>
+                <th scope="col">Nome do dispositivo:</th>
+                <th scope="col">Proprietário: </th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for j in third_devices%}
+              <tr>
+                <th scope="row"><a href="/device_control/{{j.device_key}}" class="text-success">{{j.device_key}}</a></th>
+                <td>{{j.device_name}}</td>
+                <td>{{j.owner}}</td>
+              </tr>
+                {% endfor %}
+              
+            </tbody>
+          </table>
+          {% endif %}
+          <div class="container-sm w-50 text-center">
+            <div class="row">
+            <button type="button" class="btn btn-primary mw50 my-1">Adicionar</button>
+            <button type="button" class="btn btn-secondary mw50 my-1">Editar</button>
+            <button type="button" class="btn btn-danger mw50 my-1">Remover</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="{% static '/js/bootstrap.js' %}"></script>
   </body>
 </html>

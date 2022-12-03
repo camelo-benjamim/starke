@@ -31,7 +31,7 @@ class Sensor(models.Model):
     iot_device = models.ForeignKey(IotDevice,on_delete=models.CASCADE)
     sensor_name = models.CharField(max_length=50)
     active = models.BooleanField(default=True)
-    port_micro = models.PositiveSmallIntegerField()
+    port_micro = models.CharField(max_length=2)
 
     def __str__(self):
         return self.sensor_name
@@ -41,7 +41,7 @@ class Actuator(models.Model):
     actuator_name = models.CharField(max_length=50)
     is_actuator_active = models.BooleanField(default=True)
     active = models.BooleanField(default=True)
-    port_micro_actuator = models.PositiveSmallIntegerField()
+    port_micro_actuator = models.CharField(max_length=2)
 
     def __str__(self):
         return self.actuator_name

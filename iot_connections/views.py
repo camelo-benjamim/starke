@@ -83,15 +83,15 @@ def automaticControl(request,device_key):
 def automaticRoutineExecution(request,device_key,routine):
     pass
 def microCommunication(request,device_key):
-    iot_device = get_object_or_404(IotDevice,device_key=device_key)
-    atuadores = Actuator.objects.filter(iot_device_actuator=iot_device)
-    dictionary = {}
-    indent = len(atuadores)
-    for i in atuadores:
-        dictionary.update({i.port_micro_actuator : i.is_actuator_active})
-    jsonFile = json.dumps(dictionary,indent=indent-1)
-    print(jsonFile)
-    return JsonResponse(jsonFile,safe=False)
+    if request.method == "GET":
+        iot_device = get_object_or_404(IotDevice,device_key=device_key)
+        atuadores = Actuator.objects.filter(iot_device_actuator=iot_device)
+        dictionary = {}
+        indent = len(atuadores)
+        for i in atuadores:
+            dictionary.update({i.port_micro_actuator : i.is_actuator_active})
+        jsonFile = json.dumps(dictionary,indent=indent-1)
+        print(jsonFile)
+        return JsonResponse(jsonFile,safe=False)
 
-def microCommunicationPost(request,device_key,port,value):
-    pass
+
