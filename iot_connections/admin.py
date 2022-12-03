@@ -38,3 +38,16 @@ class ActuatorAdmin(admin.ModelAdmin):
         return False
     def has_delete_permission(self, request, obj=None):
         return False
+
+@admin.register(ActuatorOrganize)
+class ActuatorOrganizeAdmin(admin.ModelAdmin):
+    list_display = ['group_name',]
+    ##ordering = ('-id',)
+    
+    
+    def has_add_permission(self, request, obj=None):
+        return True
+    def has_edit_permission(self, request, obj=None):
+        return True
+    def has_delete_permission(self, request, obj=None):
+        return True

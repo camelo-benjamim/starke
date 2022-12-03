@@ -15,6 +15,8 @@ def showIotDevices(request):
     }
     return render(request,'iot_connection/index.html',context=context)
 def mainFrame(request):
+    if request.user.is_authenticated == True:
+        return redirect ('/show_iot_devices')
     return render(request,'index.html')
 def addIotDevice(request):
     pass
@@ -54,7 +56,27 @@ def deviceControl(request,device_key):
     return render(request,'iot_connection/device_control.html',context=context)
 ##controle manual
 def manualControl(request,device_key):
-    return render(request,"iot_connection/manual_control.html")
+        iot_device_actuator = get_object_or_404(IotDevice,device_key=device_key)
+        device_groups = ActuatorOrganize.objects.filter(device=iot_device_actuator)
+        actuators = Actuator.objects.filter(iot_device_actuator=iot_device_actuator)
+        context = {
+            'device_groups': device_groups,
+            'actuators': actuators,
+            'device_key': device_key,
+        }
+        return render(request,"iot_connection/manual_control.html",context=context)    
+
+def btnAction(request,btn_key, device_key):
+    device = get_object_or_404(IotDevice,device_key=device_key)
+    actuator = get_object_or_404(Actuator,actuator_name=btn_key,iot_device_actuator=device)
+    if actuator.is_actuator_active == True:
+        actuator.is_actuator_active = False
+    else:
+        actuator.is_actuator_active = True
+    
+    actuator.save()
+
+    return redirect('/manual_control/'+ str(device_key))
 ##controle automático
 def automaticControl(request,device_key):
     pass

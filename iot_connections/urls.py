@@ -9,6 +9,7 @@ urlpatterns = [
     path('delete_iot_device/<str:device_key>',deleteIotDevice),
     path('device_control/<str:device_key>',deviceControl),
     path('manual_control/<str:device_key>',manualControl),
+    path('btn_action/<str:btn_key>/<str:device_key>/',btnAction),
     path('micro_communication/<str:device_key>',microCommunication),
     path('micro_communication_post/<str:device_key>/<int:port>/<int:value>',microCommunication),
 ]

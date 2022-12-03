@@ -10,7 +10,7 @@ from random import *
 import string
 class IotDevice(models.Model):
     owner = CurrentUserField()
-    users_may_access = models.ManyToManyField(Account,related_name="users_may_access")
+    users_may_access = models.ManyToManyField(Account,related_name="users_may_access",blank=True,null=True,default=None)
     device_name = models.CharField(max_length=30)
     direction_sense = models.BooleanField(default=True),
     module_sense = models.BooleanField(default=True),
@@ -45,6 +45,11 @@ class Actuator(models.Model):
 
     def __str__(self):
         return self.actuator_name
+
+class ActuatorOrganize(models.Model):
+    group_name = models.CharField(max_length=30)
+    actuators = models.ManyToManyField(Actuator,related_name="actuators_name")
+    device = models.ForeignKey(IotDevice,on_delete=models.CASCADE)
 
 
 ##SCRIPT/ROTINA

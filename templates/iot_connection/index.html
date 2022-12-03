@@ -31,7 +31,7 @@
         <tbody>
             {% for i in my_devices%}
           <tr>
-            <th scope="row">{{i.device_key}}</th>
+            <th scope="row"><a href="/device_control/{{i.device_key}}" class="text-success">{{i.device_key}}</a></th>
             <td>{{i.device_name}}</td>
             <td>{{i.owner}}</td>
           </tr>
